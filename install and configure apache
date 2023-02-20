@@ -21,7 +21,7 @@ creating a html file:
 Paste the following code in the index.html file:
 <html>
 <head>
-  <title> Ubuntu rocks! </title>
+  <title> web site! </title>
 </head>
 <body>
   <p> I'm running this website on localhost8081 server!
