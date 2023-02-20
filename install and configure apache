@@ -1,1 +1,68 @@
+<---overview--->
+Apache is an open source web server that’s available for Linux servers free of charge.
+we are going to configure apache web server into two fake websties
+
+step 1:
+Installing Apache:
+      sudo apt update
+      sudo apt install apache2
+      
+step 2:
+Creating Your Own Website:
+   -->By default, Apache comes with a basic site (the one that we saw in the previous step) enabled. 
+ We can modify its content in /var/www/html or settings by editing its Virtual Host file found in /etc/apache2/sites-enabled/000-default.conf.
+   -->we’re going to leave the default Apache virtual host configuration pointing to www.example.com and set up our own at http://localhost:8081 and http://localhost:8082
+creating a folder for our new website:
+      sudo mkdir /var/http/localhost81/
+      sudo mkdir /var/http/localhost82/
+creating a html file:
+  1)    cd/var/http/localhost81/
+        nano index.html
+Paste the following code in the index.html file:
+<html>
+<head>
+  <title> Ubuntu rocks! </title>
+</head>
+<body>
+  <p> I'm running this website on localhost8081 server!
+</body>
+</html>
+
+
+2)      cd/var/http/localhost82/
+         nano index.html
+ <html>
+<head>
+  <title> Ubuntu rocks! </title>
+</head>
+<body>
+  <p> I'm running this website on localhost8082 server!
+</body>
+</html> 
+
+step 3:
+Setting up the VirtualHost Configuration File:
+     1)  cd /etc/apache2/sites-available/
+        sudo cp 000-default.conf localhost81.conf
+        sudo nano localhost81.conf
+        ServerAdmin sudharsan001008@gmail.com
+        ServerName localhost81.example.com
+        
+     2) cd /etc/apache2/sites-available/
+        sudo cp 000-default.conf localhost82.conf
+        sudo nano localhost82.conf
+        ServerAdmin sudharsan001008@gmail.com
+        ServerName localhost82.example.com
+        
+step 4:
+Activating VirtualHost file:
+    we need to activate the virtual hosts configuration file to enable it
+    sudo a2ensite localhost81.conf
+    sudo a2ensite localhost82.conf
+    
+    
+ To load the new site, we restart Apache by typing:
+     service apache2 reload
+        
+      
 
